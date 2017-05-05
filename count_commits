@@ -1,0 +1,41 @@
+#!/bin/bash
+# Affichage du nombre de commits pour VTC
+#
+# VitalCentral
+cd ..
+cd ..
+cd ./VitalCentral
+
+echo Meilleurs commiteurs VTC > count_vtc
+
+svn update
+
+echo CFA `svn log | grep "CFanon" | wc -l` >> count_vtc
+echo GLI `svn log | grep "GLi" | wc -l` >> count_vtc
+echo KMI `svn log | grep "KMikheeva" | wc -l` >> count_vtc
+echo SHU `svn log | grep "SHurel" | wc -l` >> count_vtc
+echo XFI `svn log | grep "XFilaire" | wc -l` >> count_vtc
+
+mv count_vtc ../Tools/count_commits/count_vtc
+
+cd ..
+cd ./VitalCentralGUI
+
+echo Meilleurs commiteurs VTC GUI > count_vtc_gui
+
+svn update
+
+echo CFA `svn log | grep "CFanon" | wc -l` >> count_vtc_gui
+echo GLI `svn log | grep "GLi" | wc -l` >> count_vtc_gui
+echo KMI `svn log | grep "KMikheeva" | wc -l` >> count_vtc_gui
+echo SHU `svn log | grep "SHurel" | wc -l` >> count_vtc_gui
+echo XFI `svn log | grep "XFilaire" | wc -l` >> count_vtc_gui
+echo SDO `svn log | grep "Sdoufani" | wc -l` >> count_vtc_gui
+echo HGA `svn log | grep "Hgaaloul" | wc -l` >> count_vtc_gui
+
+mv count_vtc_gui ../Tools/count_commits/count_vtc_gui
+
+cd ..
+cd ./Tools/count_commits
+cat count_vtc > meilleurs_commiteurs.txt
+cat count_vtc_gui >> meilleurs_commiteurs.txt
